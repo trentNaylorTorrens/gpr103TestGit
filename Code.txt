@@ -1,0 +1,4 @@
+The Git LFS objects not staged for commit section seems misleading as it never displayed any files, even those that should have been tracked by LFS.
+If you attempt to do the previous experiment with a non git-lfs tracked file, you'll also notice that it appears under the Git LFS objects to be committed incorrectly. It is not a Git LFS object. The way you can tell that it's not actually a Git LFS object though is to look at how it ends. If it ends with (Git: 111111111) it won't be committed to LFS.
+To avoid the above confusions, you may want to favor git lfs ls-files over git lfs status to determine if something is going to be part of git-lfs or not.
+Another gotcha: Some applications such as Xcode will git add files in a weird way causing what should have been clear matches to not be considered for Git LFS. The solution is to unstage the files and then re-stage them.
